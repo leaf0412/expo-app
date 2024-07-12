@@ -1,6 +1,7 @@
 import { useNavigation, useRouter } from 'expo-router';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useEffect } from 'react';
+import AnimatedPressable from '@/components/AnimatedPressable';
 
 export default function Home() {
   const navigation = useNavigation();
@@ -14,12 +15,19 @@ export default function Home() {
     router.navigate('hello-world');
   };
 
+  const goToTabs = () => {
+    router.push('home');
+  };
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={styles.title}>导航界面</Text>
-      <Pressable style={styles.button} onPress={goToHelloWorld}>
+      <AnimatedPressable style={styles.button} onPress={goToHelloWorld}>
         <Text style={styles.text}>跳转 hello-world 界面</Text>
-      </Pressable>
+      </AnimatedPressable>
+      <AnimatedPressable style={styles.button} onPress={goToTabs}>
+        <Text style={styles.text}>跳转 tab 界面</Text>
+      </AnimatedPressable>
     </View>
   );
 }
